@@ -34,16 +34,16 @@ class NewsWebClient(
 
         })
     }
-//
-//    fun buscaNoticias(
-//        quandoSucesso : (noticiasNovas: List<News>?) -> Unit,
-//        quandoFalha: (erro: String) -> Unit
-//    ){
-//        executaRequisicao(
-//            service.getNewsApi(),
-//            quandoSucesso,
-//            quandoFalha)
-//    }
+
+    fun buscaNoticias(
+        quandoSucesso : (noticiasNovas: News?) -> Unit,
+        quandoFalha: (erro: String) -> Unit
+    ){
+        executaRequisicao(
+            service.getNewsApi(),
+            quandoSucesso,
+            quandoFalha)
+    }
 
 
 }
