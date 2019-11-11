@@ -1,8 +1,10 @@
 package br.com.ajchagas.technewsapi.ui.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import br.com.ajchagas.technewsapi.R
@@ -26,18 +28,16 @@ class ListNewsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-        viewmodel.buscaNoticias(quandoSucesso = {
-            val articles = it?.articles
-            val article = articles?.get(0)
-            article?.title.toString()
-
-        }, quandoFalha = {
-            mostraErro("Não foi possível carregar as notícias")
-        })
-
+        buscaNoticias()
     }
 
+    private fun buscaNoticias() {
+        viewmodel.buscaNoticias().observe(this, Observer { resource ->
+            resource?.dado?.let {
+                //adapter.atualiza(it)
+                 Log.i("teste", "Sucesso")}
 
+            resource?.erro?.let { mostraErro("Falha") }
+        })
+    }
 }
