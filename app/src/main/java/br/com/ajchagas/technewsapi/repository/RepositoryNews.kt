@@ -13,7 +13,7 @@ class RepositoryNews(
     fun buscaNoticias() : LiveData<Resource<News>?> {
 
         webclient.buscaNoticias(quandoSucesso = { novasNoticias ->
-            SucessoResource<News?>(dado = novasNoticias)
+            noticiasDaApi.value = Resource(dado = novasNoticias)
         }, quandoFalha = {msgErro ->
 /*O  live data sempre retorna sua ultima lista, portando é ideal verificar se o livedata atual é
  diferente de null, pois se for null, ou seja, se api falha a gente devolve o ultimo resulta e a msg de erro*/

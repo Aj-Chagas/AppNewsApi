@@ -1,7 +1,5 @@
 package br.com.ajchagas.technewsapi.repository
 
-import br.com.ajchagas.technewsapi.model.News
-
 open class Resource<T>(
     val dado: T?,
     val erro: String? = null
@@ -18,6 +16,6 @@ fun<T> criaResourceDeFalha(
     return Resource(dado = null, erro = msgErro)
 }
 
-class SucessoResource<T>(dado: T) : Resource<T>(dado)]
+class SucessoResource<T>(dado: T) : Resource<T>(dado)
 
 class FalhaResourc<T>(erro: String) : Resource<T>(dado = null, erro = erro)
