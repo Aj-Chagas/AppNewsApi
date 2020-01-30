@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface ServiceNews {
 
-    @GET("top-headlines?country=us&apiKey=288e2e5064f4453bb4686e65de93e1e3")
+    @GET("top-headlines?country=pt&apiKey=288e2e5064f4453bb4686e65de93e1e3")
     fun getNewsApi() : Call<News>
 }

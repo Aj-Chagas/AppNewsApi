@@ -14,7 +14,7 @@ class NewsWebClient(
 ) {
 
 
-    private fun <T> executaRequisicao(
+    fun <T> executaRequisicao(
         call: Call<T>,
         quandoSucesso: (noticiasNovas: T?) -> Unit,
         quandoFalha: (erro: String) -> Unit
