@@ -26,7 +26,12 @@ class DetailsNewsActivity : AppCompatActivity() {
     }
 
     private fun setTitle(titleNews: String?) {
+        val intent = intent
+        val url = intent.getStringExtra("url")
+        val titleNews = intent.getStringExtra("title")
         title = titleNews
+
+        configuraWebView(url)
     }
 
     private fun configuraWebView(url: String?) {

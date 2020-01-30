@@ -13,7 +13,6 @@ import br.com.ajchagas.technewsapi.ui.viewmodel.ListNewsViewModel
 import br.com.ajchagas.technewsapi.ui.viewmodel.factory.ListNewsViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class ListNewsActivity : AppCompatActivity() {
 
     private val viewmodel by lazy {
@@ -23,8 +22,6 @@ class ListNewsActivity : AppCompatActivity() {
         val provedor = ViewModelProviders.of(this, factory)
         provedor.get(ListNewsViewModel::class.java)
     }
-
-
 
     private val adapter by lazy{
         ListNewsAdapter(context = this, clickListener = { article ->
@@ -54,6 +51,7 @@ class ListNewsActivity : AppCompatActivity() {
     private fun configuraAdapterDoRecycler() {
         val recyclerView = activity_main_recyclerview
         recyclerView.adapter = adapter
+
     }
 
     private fun buscaNoticias() {
@@ -68,6 +66,7 @@ class ListNewsActivity : AppCompatActivity() {
             it?.erro?.let {
                 mostraErro(NOT_CONNECTION_MSG)
             }
+
         })
     }
 }

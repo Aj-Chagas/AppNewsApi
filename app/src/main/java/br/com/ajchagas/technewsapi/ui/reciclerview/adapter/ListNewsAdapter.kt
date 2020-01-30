@@ -61,6 +61,5 @@ class ListNewsAdapter(
                 itemView.setOnClickListener { clickListener(article) }
             }
         }
-
     }
 }
