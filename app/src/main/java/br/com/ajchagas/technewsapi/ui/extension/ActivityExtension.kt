@@ -1,4 +1,4 @@
-package br.com.ajchagas.technewsapi.ui.activity.extension
+package br.com.ajchagas.technewsapi.ui.extension
 
 import android.widget.Toast
 import androidx.fragment.app.Fragment

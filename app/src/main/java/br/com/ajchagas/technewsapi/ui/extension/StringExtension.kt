@@ -1,4 +1,4 @@
-package br.com.ajchagas.technewsapi.ui.activity.extension
+package br.com.ajchagas.technewsapi.ui.extension
 
 fun String.formataData() : String {
     val ano = this.substring(0, 4)

@@ -4,31 +4,70 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.com.ajchagas.technewsapi.model.News
 import br.com.ajchagas.technewsapi.retrofit.webClient.NewsWebClient
-import br.com.ajchagas.technewsapi.ui.viewmodel.ListNewsViewModel
-import org.koin.android.ext.android.inject
+import kotlinx.coroutines.*
+import java.io.IOException
 
 class RepositoryNews(
     private val webclient : NewsWebClient
 ) {
 
-    private val noticiasDaApi = MutableLiveData<Resource<News>?>()
+    private val topHealinesNews = MutableLiveData<Resource<News?>?>()
 
-    fun buscaNoticias() : LiveData<Resource<News>?> {
-
-        webclient.buscaNoticias(quandoSucesso = { novasNoticias ->
-            noticiasDaApi.value = Resource(dado = novasNoticias)
-        }, quandoFalha = {msgErro ->
-/*O  live data sempre retorna sua ultima lista, portando é ideal verificar se o livedata atual é
- diferente de null, pois se for null, ou seja, se api falha a gente devolve o ultimo resulta e a msg de erro*/
-
-            val resultadoAtual = noticiasDaApi.value
-            val resultadoAtualizado = criaResourceDeFalha<News>(resultadoAtual, msgErro)
-            noticiasDaApi.value = resultadoAtualizado
-        })
-
-        return noticiasDaApi
+    fun getTopHealinesNews(viewModelJob: Job = Job()): LiveData<Resource<News?>?> {
+        return topHealinesNews.also { liveData ->
+            CoroutineScope(Dispatchers.IO + viewModelJob).launch{
+                val resource :  Resource<News?>? = try{
+                    SucessoResource(dado = webclient.getNewTopHealines())
+                } catch (e : IOException){
+                    FalhaResourc(erro = e.message!!)
+                }
+                liveData.postValue(resource)
+            }
+        }
     }
 
+    private val businessNews = MutableLiveData<Resource<News?>?>()
 
+    fun getBusinessNews(viewModelJob: Job = Job()): LiveData<Resource<News?>?> {
+        return businessNews.also {liveData ->
+            CoroutineScope(Dispatchers.IO + viewModelJob).launch{
+                val resource :  Resource<News?>? = try{
+                    SucessoResource(dado = webclient.getBusinessNews())
+                } catch (e : IOException){
+                    FalhaResourc(erro = e.message!!)
+                }
+                liveData.postValue(resource)
+            }
+        }
+    }
 
+    private val entertainmentNews = MutableLiveData<Resource<News?>?>()
+
+    fun getEntertainmentNews(viewModelJob: CompletableJob): LiveData<Resource<News?>?> {
+        return entertainmentNews.also {liveData ->
+            CoroutineScope(Dispatchers.IO + viewModelJob).launch{
+                val resource :  Resource<News?>? = try{
+                    SucessoResource(dado = webclient.getEntertainmentNews())
+                } catch (e : IOException){
+                    FalhaResourc(erro = e.message!!)
+                }
+                liveData.postValue(resource)
+            }
+        }
+    }
+
+    private val technologyNews = MutableLiveData<Resource<News?>?>()
+
+    fun getTechnologyNews(viewModelJob: CompletableJob): LiveData<Resource<News?>?> {
+        return technologyNews.also {liveData ->
+            CoroutineScope(Dispatchers.IO + viewModelJob).launch{
+                val resource :  Resource<News?>? = try{
+                    SucessoResource(dado = webclient.getTechnologyNews())
+                } catch (e : IOException){
+                    FalhaResourc(erro = e.message!!)
+                }
+                liveData.postValue(resource)
+            }
+        }
+    }
 }

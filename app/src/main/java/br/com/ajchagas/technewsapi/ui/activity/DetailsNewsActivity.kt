@@ -1,4 +1,4 @@
-package br.com.ajchagas.technewsapi.ui.activity.fragment
+package br.com.ajchagas.technewsapi.ui.activity
 
 import android.os.Bundle
 import android.view.View
