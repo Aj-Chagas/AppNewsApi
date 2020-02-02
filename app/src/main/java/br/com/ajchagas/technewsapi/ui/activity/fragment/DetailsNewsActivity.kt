@@ -1,4 +1,4 @@
-package br.com.ajchagas.technewsapi.ui.activity
+package br.com.ajchagas.technewsapi.ui.activity.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,8 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.ajchagas.technewsapi.R
+import br.com.ajchagas.technewsapi.TITLE_KEY
+import br.com.ajchagas.technewsapi.URL_KEY
 import kotlinx.android.synthetic.main.activity_details_news.*
 
 

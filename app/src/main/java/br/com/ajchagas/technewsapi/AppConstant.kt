@@ -1,4 +1,4 @@
-package br.com.ajchagas.technewsapi.ui.activity
+package br.com.ajchagas.technewsapi
 
 val URL_KEY = "url"
 val TITLE_KEY = "title"

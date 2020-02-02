@@ -11,15 +11,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-
-        <activity android:name=".ui.activity.DetailsNewsActivity"></activity>
-        <activity android:name=".ui.activity.ListNewsActivity">
+        android:name=".ui.AppApplication"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".ui.activity.ViewPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/AppTheme"
+            android:name=".ui.activity.fragment.DetailsNewsActivity" />
+        <activity android:name=".ui.activity.fragment.MainNewsFragment">
+
         </activity>
 
         <meta-data

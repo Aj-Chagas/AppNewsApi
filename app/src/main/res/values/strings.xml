@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">TechNewsApi</string>
+    <string name="app_name">Newspaper</string>
     <string name="title_list_news_activity">Home</string>
-    <string name="title_activity_tab_bar">TabBar</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Principais</string>
+    <string name="tab_text_2">Negócios</string>
+    <string name="tab_text_3">Entretenimento</string>
 </resources>

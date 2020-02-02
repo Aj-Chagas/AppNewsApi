@@ -4,10 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.com.ajchagas.technewsapi.model.News
 import br.com.ajchagas.technewsapi.retrofit.webClient.NewsWebClient
+import br.com.ajchagas.technewsapi.ui.viewmodel.ListNewsViewModel
+import org.koin.android.ext.android.inject
 
 class RepositoryNews(
-    private val webclient : NewsWebClient = NewsWebClient()
+    private val webclient : NewsWebClient
 ) {
+
     private val noticiasDaApi = MutableLiveData<Resource<News>?>()
 
     fun buscaNoticias() : LiveData<Resource<News>?> {

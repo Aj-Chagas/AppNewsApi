@@ -1,18 +1,12 @@
 package br.com.ajchagas.technewsapi.ui.activity.extension
 
-import android.app.Activity
 import android.widget.Toast
-import br.com.ajchagas.technewsapi.R
+import androidx.fragment.app.Fragment
 
-fun Activity.mostraErro(mensagem: String) {
-
-
+fun Fragment.mostraErro(mensagem: String) {
     Toast.makeText(
-        this,
+        context,
         mensagem,
         Toast.LENGTH_LONG
     ).show()
-
-
-
 }

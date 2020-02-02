@@ -1,7 +1,6 @@
 package br.com.ajchagas.technewsapi.retrofit.webClient
 
 import br.com.ajchagas.technewsapi.model.News
-import br.com.ajchagas.technewsapi.retrofit.RetrofitConfig
 import br.com.ajchagas.technewsapi.retrofit.service.ServiceNews
 import retrofit2.Call
 import retrofit2.Callback
@@ -10,9 +9,8 @@ import retrofit2.Response
 private val REQUISICAO_NAO_SUCEDIDA: String = "Requisição não sucedida"
 
 class NewsWebClient(
-    private val service : ServiceNews = RetrofitConfig().serviceNews
+    private val service : ServiceNews
 ) {
-
 
     fun <T> executaRequisicao(
         call: Call<T>,
@@ -31,7 +29,6 @@ class NewsWebClient(
                     quandoFalha(REQUISICAO_NAO_SUCEDIDA)
                 }
             }
-
         })
     }
 
@@ -44,6 +41,4 @@ class NewsWebClient(
             quandoSucesso,
             quandoFalha)
     }
-
-
 }

@@ -10,7 +10,6 @@ class ListNewsViewModel(
     private val repository : RepositoryNews
 ) : ViewModel() {
 
-
     fun buscaNoticias() : LiveData<Resource<News>?>{
         return repository.buscaNoticias()
     }
