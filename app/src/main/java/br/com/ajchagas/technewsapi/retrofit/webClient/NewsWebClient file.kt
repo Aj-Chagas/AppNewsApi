@@ -22,4 +22,16 @@ class NewsWebClient(
     fun getTechnologyNews(): News? {
         return service.getTechnologyNews().execute().body()
     }
+
+    fun getHeathNews(): News? {
+        return service.getHeathNews().execute().body()
+    }
+
+    fun getScienceNews(): News? {
+        return service.getScienceNews().execute().body()
+    }
+
+    fun getSportNews(): News? {
+        return service.getSportNews().execute().body()
+    }
 }

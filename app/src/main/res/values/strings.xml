@@ -5,4 +5,7 @@
     <string name="tab_text_2">Negócios</string>
     <string name="tab_text_3">Entretenimento</string>
     <string name="tab_text_4">Tecnologia</string>
+    <string name="tab_text_5">Saúde</string>
+    <string name="tab_text_6">Sport</string>
+    <string name="tab_text_7">Science</string>
 </resources>

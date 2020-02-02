@@ -18,4 +18,12 @@ interface ServiceNews {
     @GET("top-headlines?country=br&category=technology&apiKey=288e2e5064f4453bb4686e65de93e1e3")
     fun getTechnologyNews(): Call<News>
 
+    @GET("top-headlines?country=br&category=health&apiKey=288e2e5064f4453bb4686e65de93e1e3")
+    fun getHeathNews(): Call<News>
+
+    @GET("top-headlines?country=br&category=science&apiKey=288e2e5064f4453bb4686e65de93e1e3")
+    fun getScienceNews(): Call<News>
+
+    @GET("top-headlines?country=br&category=sports&apiKey=288e2e5064f4453bb4686e65de93e1e3")
+    fun getSportNews(): Call<News>
 }

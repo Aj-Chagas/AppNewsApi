@@ -1,4 +1,4 @@
-package br.com.ajchagas.technewsapi.ui.activity.fragment
+package br.com.ajchagas.technewsapi.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,12 +12,11 @@ import br.com.ajchagas.technewsapi.model.Article
 import br.com.ajchagas.technewsapi.model.News
 import br.com.ajchagas.technewsapi.ui.adapter.RecyclerViewListNewsAdapter
 import br.com.ajchagas.technewsapi.ui.extension.mostraErro
-import br.com.ajchagas.technewsapi.ui.fragment.MainNewsFragment
 import br.com.ajchagas.technewsapi.ui.viewmodel.PageViewModel
 import kotlinx.android.synthetic.main.default_news.*
 import org.koin.android.ext.android.inject
 
-class EntertainmentNewsFragment : Fragment(){
+class HeathNewsFragment : Fragment(){
 
     var whenNewsClicked: (Article) -> Unit = {}
 
@@ -26,8 +25,8 @@ class EntertainmentNewsFragment : Fragment(){
     private val adapter by inject<RecyclerViewListNewsAdapter>()
 
     companion object{
-        fun newInstance() : EntertainmentNewsFragment {
-            return EntertainmentNewsFragment()
+        fun newInstance() : HeathNewsFragment {
+            return HeathNewsFragment()
         }
     }
 
@@ -48,7 +47,7 @@ class EntertainmentNewsFragment : Fragment(){
 
     private fun setupRefresh() {
         activity_main_swipe.setOnRefreshListener {
-            viewModel.getEntertainmentNews()
+            viewModel.getHeathNews()
         }
     }
 
@@ -63,7 +62,7 @@ class EntertainmentNewsFragment : Fragment(){
     }
 
     private fun getTopHealinesNews() {
-        viewModel.getEntertainmentNews().observe(this, Observer {
+        viewModel.getHeathNews().observe(this, Observer {
             activity_main_swipe.isRefreshing = false
             it?.dado?.let { news ->
                 getListOfArticles(news)?.let { articles -> adapter?.update(articles) }

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:name=".ui.AppApplication"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ui.ViewPageActivity">
+        <activity android:name=".ui.activity.ViewPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

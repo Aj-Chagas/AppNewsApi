@@ -70,4 +70,50 @@ class RepositoryNews(
             }
         }
     }
+
+    private val heathNews = MutableLiveData<Resource<News?>?>()
+
+    fun getHeathNews(viewModelJob: CompletableJob): LiveData<Resource<News?>?> {
+        return heathNews.also {liveData ->
+            CoroutineScope(Dispatchers.IO + viewModelJob).launch{
+                val resource :  Resource<News?>? = try{
+                    SucessoResource(dado = webclient.getHeathNews())
+                } catch (e : IOException){
+                    FalhaResourc(erro = e.message!!)
+                }
+                liveData.postValue(resource)
+            }
+        }
+    }
+
+    private val scienceNews = MutableLiveData<Resource<News?>?>()
+
+    fun getScienceNews(viewModelJob: CompletableJob): LiveData<Resource<News?>?> {
+        return scienceNews.also {liveData ->
+            CoroutineScope(Dispatchers.IO + viewModelJob).launch{
+                val resource :  Resource<News?>? = try{
+                    SucessoResource(dado = webclient.getScienceNews())
+                } catch (e : IOException){
+                    FalhaResourc(erro = e.message!!)
+                }
+                liveData.postValue(resource)
+            }
+        }
+    }
+
+    private val sportNews = MutableLiveData<Resource<News?>?>()
+
+    fun getSportNews(viewModelJob: CompletableJob): LiveData<Resource<News?>?> {
+        return sportNews.also {liveData ->
+            CoroutineScope(Dispatchers.IO + viewModelJob).launch{
+                val resource :  Resource<News?>? = try{
+                    SucessoResource(dado = webclient.getSportNews())
+                } catch (e : IOException){
+                    FalhaResourc(erro = e.message!!)
+                }
+                liveData.postValue(resource)
+            }
+        }
+    }
+
 }

@@ -30,9 +30,20 @@ class PageViewModel(
         return repository.getTechnologyNews(viewModelJob)
     }
 
+    fun getScienceNews(): LiveData<Resource<News?>?> {
+        return repository.getScienceNews(viewModelJob)
+    }
+
+    fun getSportNews(): LiveData<Resource<News?>?> {
+        return repository.getSportNews(viewModelJob)
+    }
+
+    fun getHeathNews(): LiveData<Resource<News?>?> {
+        return repository.getHeathNews(viewModelJob)
+    }
+
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
 }

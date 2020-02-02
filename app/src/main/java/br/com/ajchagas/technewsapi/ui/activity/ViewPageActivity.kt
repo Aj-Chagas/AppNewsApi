@@ -1,4 +1,4 @@
-package br.com.ajchagas.technewsapi.ui
+package br.com.ajchagas.technewsapi.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +8,8 @@ import br.com.ajchagas.technewsapi.R
 import br.com.ajchagas.technewsapi.TITLE_KEY
 import br.com.ajchagas.technewsapi.URL_KEY
 import br.com.ajchagas.technewsapi.model.Article
-import br.com.ajchagas.technewsapi.ui.activity.DetailsNewsActivity
-import br.com.ajchagas.technewsapi.ui.activity.fragment.EntertainmentNewsFragment
-import br.com.ajchagas.technewsapi.ui.fragment.MainNewsFragment
 import br.com.ajchagas.technewsapi.ui.adapter.TabsPagerAdapter
-import br.com.ajchagas.technewsapi.ui.fragment.BusinessNewsFragment
+import br.com.ajchagas.technewsapi.ui.fragment.*
 import kotlinx.android.synthetic.main.activity_view_page.*
 
 class ViewPageActivity : AppCompatActivity() {
@@ -34,6 +31,9 @@ class ViewPageActivity : AppCompatActivity() {
             is MainNewsFragment -> fragment.whenNewsClicked = this::openDetailsNewsActivity
             is BusinessNewsFragment -> fragment.whenNewsClicked = this::openDetailsNewsActivity
             is EntertainmentNewsFragment -> fragment.whenNewsClicked = this::openDetailsNewsActivity
+            is HeathNewsFragment -> fragment.whenNewsClicked = this::openDetailsNewsActivity
+            is SportFragment -> fragment.whenNewsClicked = this::openDetailsNewsActivity
+            is TechnologyNewsFragment -> fragment.whenNewsClicked = this::openDetailsNewsActivity
         }
     }
 
