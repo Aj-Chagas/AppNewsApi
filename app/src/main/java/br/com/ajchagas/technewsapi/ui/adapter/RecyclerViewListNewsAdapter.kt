@@ -1,21 +1,18 @@
 package br.com.ajchagas.technewsapi.ui.adapter
 
 import android.content.Context
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.ajchagas.technewsapi.R
 import br.com.ajchagas.technewsapi.model.Article
-import com.github.marlonlom.utilities.timeago.TimeAgo
+import br.com.ajchagas.technewsapi.ui.extension.timeAgo
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.news_item.view.news_item_imageView_thumbnail
 import kotlinx.android.synthetic.main.news_item.view.news_item_source
 import kotlinx.android.synthetic.main.news_item.view.news_item_title
 import kotlinx.android.synthetic.main.news_item_2.view.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class RecyclerViewListNewsAdapter(
@@ -54,8 +51,8 @@ class RecyclerViewListNewsAdapter(
             if(article.urlToImage != null){
                 this.article = article
                 setupTitle(article)
-                itemView.news_item_description.text = article.description
-                itemView.news_item_author.text = article.author
+                setupDescription(article)
+                setupAuthor(article)
                 setupHoursAgo(article)
                 setupSource(article)
                 setupThumbnail(article)
@@ -63,11 +60,16 @@ class RecyclerViewListNewsAdapter(
             }
         }
 
-        private fun setupHoursAgo(article: Article) {
-            val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-            val time = sdf.parse(article.publishedAt).getTime()
+        private fun setupDescription(article: Article) {
+            itemView.news_item_description.text = article.description
+        }
 
-            itemView.news_item_hours_ago.text =  DateUtils.getRelativeTimeSpanString(time, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)
+        private fun setupAuthor(article: Article) {
+            itemView.news_item_author.text = article.author
+        }
+
+        private fun setupHoursAgo(article: Article) {
+            itemView.news_item_hours_ago.text = article.publishedAt.timeAgo()
         }
 
         private fun setupThumbnail(article: Article) {
