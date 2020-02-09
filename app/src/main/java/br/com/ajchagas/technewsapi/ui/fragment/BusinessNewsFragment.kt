@@ -16,11 +16,7 @@ import br.com.ajchagas.technewsapi.ui.viewmodel.PageViewModel
 import kotlinx.android.synthetic.main.default_news.*
 import org.koin.android.ext.android.inject
 
-class BusinessNewsFragment : Fragment() {
-
-    var whenNewsClicked: (Article) -> Unit = {}
-
-    private val adapter by inject<RecyclerViewListNewsAdapter>()
+class BusinessNewsFragment : BaseTabsFragment() {
 
     private val viewModel by inject<PageViewModel>()
 
@@ -30,25 +26,11 @@ class BusinessNewsFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.default_news, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapterOfRecycler()
         getTopHealinesNews()
         setupRefresh()
-    }
-
-    private fun setupAdapterOfRecycler() {
-        val recyclerView = activity_main_recyclerview
-        recyclerView.adapter = adapter
-        setupAdapterRecyclerView()
     }
 
     private fun getTopHealinesNews() {
@@ -63,16 +45,9 @@ class BusinessNewsFragment : Fragment() {
         })
     }
 
-    private fun setupAdapterRecyclerView() {
-        adapter?.clickListener = whenNewsClicked
-    }
-
-    private fun getListOfArticles(news: News) = news?.articles
-
     private fun setupRefresh() {
         activity_main_swipe.setOnRefreshListener {
             viewModel.getBusinessNews()
         }
     }
-
 }
