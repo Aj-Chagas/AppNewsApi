@@ -5,12 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import br.com.ajchagas.technewsapi.R
-import br.com.ajchagas.technewsapi.ui.fragment.EntertainmentNewsFragment
-import br.com.ajchagas.technewsapi.ui.fragment.HeathNewsFragment
-import br.com.ajchagas.technewsapi.ui.fragment.SportFragment
-import br.com.ajchagas.technewsapi.ui.fragment.TechnologyNewsFragment
-import br.com.ajchagas.technewsapi.ui.fragment.BusinessNewsFragment
-import br.com.ajchagas.technewsapi.ui.fragment.MainNewsFragment
+import br.com.ajchagas.technewsapi.ui.fragment.*
 
 class TabsPagerAdapter(
     private val context: Context,

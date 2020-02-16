@@ -46,7 +46,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
-    def koin_version= "2.0.1"
+    def koin_version = "2.0.1"
     // Koin AndroidX Scope feature
     implementation "org.koin:koin-androidx-scope:$koin_version"
 

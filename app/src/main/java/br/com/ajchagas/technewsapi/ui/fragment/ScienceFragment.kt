@@ -9,13 +9,13 @@ import br.com.ajchagas.technewsapi.ui.viewmodel.PageNewsViewModel
 import kotlinx.android.synthetic.main.default_news.*
 import org.koin.android.ext.android.inject
 
-class MainNewsFragment : BaseTabsFragment() {
+class ScienceFragment : BaseTabsFragment() {
 
     private val viewModel by inject<PageNewsViewModel>()
 
     companion object{
-        fun newInstance() : MainNewsFragment {
-            return MainNewsFragment()
+        fun newInstance() : ScienceFragment {
+            return ScienceFragment()
         }
     }
 
@@ -28,12 +28,12 @@ class MainNewsFragment : BaseTabsFragment() {
 
     private fun setupRefresh() {
         activity_main_swipe.setOnRefreshListener {
-            viewModel.getTopHeadlinesNews()
+            viewModel.getScienceNews()
         }
     }
 
     private fun getTopHealinesNews() {
-        viewModel.getTopHeadlinesNews().observe(this, Observer {
+        viewModel.getScienceNews().observe(this, Observer {
             activity_main_swipe.isRefreshing = false
             it?.dado?.let { news ->
                 getListOfArticles(news)?.let { articles -> adapter?.update(articles) }

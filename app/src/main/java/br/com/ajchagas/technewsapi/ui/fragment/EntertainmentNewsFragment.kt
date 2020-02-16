@@ -1,24 +1,17 @@
 package br.com.ajchagas.technewsapi.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import br.com.ajchagas.technewsapi.NOT_CONNECTION_MSG
-import br.com.ajchagas.technewsapi.R
-import br.com.ajchagas.technewsapi.model.Article
-import br.com.ajchagas.technewsapi.model.News
-import br.com.ajchagas.technewsapi.ui.adapter.RecyclerViewListNewsAdapter
 import br.com.ajchagas.technewsapi.ui.extension.mostraErro
-import br.com.ajchagas.technewsapi.ui.viewmodel.PageViewModel
+import br.com.ajchagas.technewsapi.ui.viewmodel.PageNewsViewModel
 import kotlinx.android.synthetic.main.default_news.*
 import org.koin.android.ext.android.inject
 
 class EntertainmentNewsFragment : BaseTabsFragment(){
 
-    private val viewModel by inject<PageViewModel>()
+    private val viewModel by inject<PageNewsViewModel>()
 
     companion object{
         fun newInstance() : EntertainmentNewsFragment {
