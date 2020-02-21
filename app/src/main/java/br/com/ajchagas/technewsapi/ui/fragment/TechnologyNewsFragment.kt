@@ -22,6 +22,7 @@ class TechnologyNewsFragment : BaseTabsFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapterOfRecycler()
+        showLoading()
         getTopHealinesNews()
         setupRefresh()
     }
@@ -36,6 +37,7 @@ class TechnologyNewsFragment : BaseTabsFragment() {
         viewModel.getTechnologyNews().observe(this, Observer {
             activity_main_swipe.isRefreshing = false
             it?.dado?.let { news ->
+                goneLoading()
                 getListOfArticles(news)?.let { articles -> adapter?.update(articles) }
             }
             it?.erro?.let {

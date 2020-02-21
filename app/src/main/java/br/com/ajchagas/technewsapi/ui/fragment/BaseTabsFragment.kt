@@ -36,5 +36,15 @@ open class BaseTabsFragment : Fragment() {
         adapter?.clickListener = whenNewsClicked
     }
 
+
+    protected fun showLoading() {
+        activityDefaultNewsProgress.visibility = View.VISIBLE
+    }
+
+    protected fun goneLoading(){
+        activityDefaultNewsProgress.visibility = View.GONE
+    }
+
+
     protected fun getListOfArticles(news: News) = news?.articles
 }

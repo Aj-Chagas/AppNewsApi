@@ -22,6 +22,7 @@ class EntertainmentNewsFragment : BaseTabsFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapterOfRecycler()
+        showLoading()
         getTopHealinesNews()
         setupRefresh()
     }
@@ -36,6 +37,7 @@ class EntertainmentNewsFragment : BaseTabsFragment(){
         viewModel.getEntertainmentNews().observe(this, Observer {
             activity_main_swipe.isRefreshing = false
             it?.dado?.let { news ->
+                goneLoading()
                 getListOfArticles(news)?.let { articles -> adapter?.update(articles) }
             }
             it?.erro?.let {
