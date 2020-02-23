@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.ajchagas.technewsapi.R
 import br.com.ajchagas.technewsapi.model.Article
 import br.com.ajchagas.technewsapi.ui.extension.timeAgo
+import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.news_item.view.news_item_imageView_thumbnail
 import kotlinx.android.synthetic.main.news_item.view.news_item_source
@@ -79,7 +80,7 @@ class RecyclerViewListNewsAdapter(
                 .load(article.urlToImage)
                 .fit()
                 .centerCrop()
-                .placeholder(R.drawable.ic_cloud_download_black_24dp)
+                .placeholder(R.drawable.ic_sand)
                 .error(R.drawable.ic_error_black_24dp)
                 .into(imageView)
         }
