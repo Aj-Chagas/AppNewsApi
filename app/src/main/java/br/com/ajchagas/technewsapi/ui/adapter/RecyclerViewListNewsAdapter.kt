@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.ajchagas.technewsapi.R
 import br.com.ajchagas.technewsapi.model.Article
 import br.com.ajchagas.technewsapi.ui.extension.timeAgo
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.news_item.view.news_item_imageView_thumbnail
 import kotlinx.android.synthetic.main.news_item.view.news_item_source
 import kotlinx.android.synthetic.main.news_item.view.news_item_title
 import kotlinx.android.synthetic.main.news_item_2.view.*
+import java.lang.Exception
 
 
 class RecyclerViewListNewsAdapter(
@@ -35,10 +36,10 @@ class RecyclerViewListNewsAdapter(
 
     }
 
-    fun update(listaDeNoticias: List<Article>) {
+    fun update(listOfNews: List<Article>) {
         notifyItemRangeRemoved(0, this.listOfNews.size)
         this.listOfNews.clear()
-        this.listOfNews.addAll(listaDeNoticias)
+        this.listOfNews.addAll(listOfNews)
         notifyItemRangeInserted(0, this.listOfNews.size)
     }
 
@@ -80,9 +81,17 @@ class RecyclerViewListNewsAdapter(
                 .load(article.urlToImage)
                 .fit()
                 .centerCrop()
-                .placeholder(R.drawable.ic_sand)
-                .error(R.drawable.ic_error_black_24dp)
-                .into(imageView)
+                .into(imageView, object : Callback {
+                    override fun onSuccess() {
+                        itemView.news_item_placeholder.visibility = View.GONE
+                        itemView.news_item_error.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        itemView.news_item_placeholder.visibility = View.GONE
+                        itemView.news_item_error.visibility = View.VISIBLE
+                    }
+                })
         }
 
         private fun setupSource(article: Article) {
@@ -92,6 +101,5 @@ class RecyclerViewListNewsAdapter(
         private fun setupTitle(article: Article) {
             itemView.news_item_title.text = article.title
         }
-
     }
 }
